@@ -34,6 +34,8 @@ class LQChartLine: UIView {
         super.init(frame: frame)
     }
     
+    //MARK: - 内部控制方法
+    ///添加移动小圆点
     func addCircle(point : CGPoint , index : NSInteger){
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
         view.center = point
@@ -50,7 +52,21 @@ class LQChartLine: UIView {
         btn.tag = index
         btn.addTarget(self, action: #selector(circleButtonClick(btn:)), for: .touchUpInside)
         addSubview(btn)
-        
+    }
+    
+    ///添加x轴 文字
+    
+    private func addXLabel(point : CGPoint, index : NSInteger){
+        //项目中只展示头尾视图
+        if index == 0 || index == xValues.count{
+            let xLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+            xLabel.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + 10)
+            xLabel.textColor = UIColor.white
+            xLabel.font = UIFont.systemFont(ofSize: 12)
+            xLabel.textAlignment = NSTextAlignment.center
+            xLabel.sizeToFit()
+            addSubview(xLabel)
+        }
     }
     
     ///开始绘制图表
@@ -79,13 +95,34 @@ class LQChartLine: UIView {
         let bezierLine = UIBezierPath()
         
         for i in 0..<points.count{
+            let point = points[i]
+            
             if i == 0{
-                bezierLine.move(to: points[i])
+                bezierLine.move(to: point)
             }
             else{
-                bezierLine.addLine(to: points[i])
+                bezierLine.addLine(to: point)
             }
+            addCircle(point: point, index: i)
+            addXLabel(point: point, index: i)
         }
+
+        ///添加移动小圆点
+        moveButton.center = points.last!
+        addSubview(moveButton)
+        
+        ///设置图层
+        shapeLayer.path = bezierLine.cgPath
+        
+        let pathAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
+        pathAnimation.duration = Double(points.count) * 0.5
+        pathAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pathAnimation.fromValue = 0.0
+        pathAnimation.toValue = 1.0
+        pathAnimation.autoreverses = false
+        shapeLayer.add(pathAnimation, forKey: "strokeEndAnimation")
+        
+        shapeLayer.strokeEnd = 1.0
         
     }
     
@@ -104,9 +141,17 @@ class LQChartLine: UIView {
     private lazy var pointYArray = Array<CGFloat>()
     ///点 坐标
     private lazy var points = Array<CGPoint>()
-    
     ///图层
     private lazy var shapeLayer = CAShapeLayer()
+    ///移动的小圆点
+    private lazy var moveButton : UIButton = {
+       let btn = UIButton(type: .custom)
+        btn.backgroundColor = UIColor.init(white: 1.0, alpha: 0.7)
+        btn.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        return btn
+    }()
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
