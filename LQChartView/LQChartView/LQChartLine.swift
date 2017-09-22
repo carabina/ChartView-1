@@ -10,7 +10,6 @@ import UIKit
 ///y轴默认分 5等份
 private let kYEqualPaths: Int = 5
 
-
 class LQChartLine: UIView {
 
     ///x轴数据
@@ -18,7 +17,7 @@ class LQChartLine: UIView {
         didSet{
             
         chartLineTheXAxisSpan = (UIScreen.main.bounds.width - chartLineStartX * 2.0) / CGFloat(xValues.count - 1)
-        chartLineTheYAxisSpan = frame.size.height / CGFloat(kYEqualPaths)
+        chartLineTheYAxisSpan = (frame.size.height - chartLineStartY * 2.0) / CGFloat(kYEqualPaths)
         drawVertical()
             
         }
@@ -49,8 +48,8 @@ class LQChartLine: UIView {
             //这里只显示 第一根和最后一根
 //            if i == 0 || i == kYEqualPaths {
             
-                path.move(to: CGPoint(x: 0, y: chartLineTheYAxisSpan * CGFloat(i)))
-                path.addLine(to: CGPoint(x: chartLineStartX * 2.0 + CGFloat(xValues.count - 1) * chartLineTheXAxisSpan, y: chartLineTheYAxisSpan * CGFloat(i)))
+                path.move(to: CGPoint(x: 0, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
+                path.addLine(to: CGPoint(x: chartLineStartX * 2.0 + CGFloat(xValues.count - 1) * chartLineTheXAxisSpan, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
                 path.close()
                 slayer.path = path.cgPath
                 slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor
@@ -67,8 +66,8 @@ class LQChartLine: UIView {
         let slayer = CAShapeLayer()
         
         for i in 0..<xValues.count{
-                path.move(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: 0))
-                path.addLine(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths)))
+                path.move(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineStartY))
+                path.addLine(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + chartLineStartY))
                 path.close()
                 slayer.path = path.cgPath
                 slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 79.0/255.0, alpha: 1.0).cgColor
@@ -91,7 +90,7 @@ class LQChartLine: UIView {
         
         btn.frame = CGRect(x: 0, y: 0, width: 15, height: chartLineTheYAxisSpan * CGFloat(kYEqualPaths))
         btn.backgroundColor = UIColor.clear
-        btn.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) * 0.5)
+        btn.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) * 0.5 + chartLineStartY)
         btn.tag = index
         btn.addTarget(self, action: #selector(circleButtonClick(btn:)), for: .touchUpInside)
         addSubview(btn)
@@ -102,7 +101,7 @@ class LQChartLine: UIView {
         //项目中只展示头尾视图
         if index == 0 || index == xValues.count{
             let xLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-            xLabel.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + 10)
+            xLabel.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + 10 + chartLineStartY)
             xLabel.textColor = UIColor.white
             xLabel.font = UIFont.systemFont(ofSize: 12)
             xLabel.textAlignment = NSTextAlignment.center
@@ -117,8 +116,12 @@ class LQChartLine: UIView {
             pointXArray.append(chartLineStartX + chartLineTheXAxisSpan * CGFloat(i))
         }
         
+        let maxValue = (yValues.max()! as NSString).floatValue
+        
+        let yHeight = chartLineTheYAxisSpan * CGFloat(kYEqualPaths)
+        
         for i in 0..<yValues.count{
-            pointYArray.append(chartLineTheYAxisSpan * CGFloat(kYEqualPaths) - CGFloat((yValues[i] as NSString).floatValue) * 0.8 / chartLineTheYAxisSpan * CGFloat(kYEqualPaths))
+            pointYArray.append(CGFloat((yValues[i] as NSString).floatValue) * 0.95 /  CGFloat(maxValue) * yHeight + chartLineStartY)
         }
         
         for i in 0..<pointXArray.count{
