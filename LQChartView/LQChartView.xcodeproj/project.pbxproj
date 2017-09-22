@@ -13,6 +13,8 @@
 		49412C5D1F73EDC00059119A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */; };
 		49412C651F73EE590059119A /* LQChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C641F73EE590059119A /* LQChartView.swift */; };
 		49412C671F73EE840059119A /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C661F73EE840059119A /* LQChartLine.swift */; };
+		49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */; };
+		49412C6B1F754A940059119A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C6A1F754A940059119A /* String+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		49412C5E1F73EDC00059119A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49412C641F73EE590059119A /* LQChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartView.swift; sourceTree = "<group>"; };
 		49412C661F73EE840059119A /* LQChartLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
+		49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
+		49412C6A1F754A940059119A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				49412C541F73EDC00059119A /* ViewController.swift */,
 				49412C641F73EE590059119A /* LQChartView.swift */,
 				49412C661F73EE840059119A /* LQChartLine.swift */,
+				49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */,
+				49412C6A1F754A940059119A /* String+Date.swift */,
 				49412C591F73EDC00059119A /* Assets.xcassets */,
 				49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */,
 				49412C5E1F73EDC00059119A /* Info.plist */,
@@ -139,9 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */,
 				49412C651F73EE590059119A /* LQChartView.swift in Sources */,
 				49412C551F73EDC00059119A /* ViewController.swift in Sources */,
 				49412C531F73EDC00059119A /* AppDelegate.swift in Sources */,
+				49412C6B1F754A940059119A /* String+Date.swift in Sources */,
 				49412C671F73EE840059119A /* LQChartLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

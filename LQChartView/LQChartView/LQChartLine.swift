@@ -7,11 +7,11 @@
 //
 
 import UIKit
-///y轴默认分 5等份
+
+///y轴默认分5等份
 private let kYEqualPaths: Int = 5
 
 class LQChartLine: UIView {
-
     ///x轴数据
     var xValues = Array<String>(){
         didSet{
@@ -19,7 +19,6 @@ class LQChartLine: UIView {
         chartLineTheXAxisSpan = (UIScreen.main.bounds.width - chartLineStartX * 2.0) / CGFloat(xValues.count - 1)
         chartLineTheYAxisSpan = (frame.size.height - chartLineStartY * 2.0) / CGFloat(kYEqualPaths)
         drawVertical()
-            
         }
     }
   
@@ -36,6 +35,7 @@ class LQChartLine: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
     }
     
     //MARK: - 内部控制方法
@@ -44,12 +44,15 @@ class LQChartLine: UIView {
         let path = UIBezierPath()
         let slayer = CAShapeLayer()
         
+        //计算横线 结束点 x的坐标
+        let pointX = chartLineStartX * 2.0 + CGFloat(xValues.count - 1) * chartLineTheXAxisSpan
+        
         for i in 0...kYEqualPaths{
             //这里只显示 第一根和最后一根
 //            if i == 0 || i == kYEqualPaths {
             
                 path.move(to: CGPoint(x: 0, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
-                path.addLine(to: CGPoint(x: chartLineStartX * 2.0 + CGFloat(xValues.count - 1) * chartLineTheXAxisSpan, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
+                path.addLine(to: CGPoint(x: pointX, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
                 path.close()
                 slayer.path = path.cgPath
                 slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor
@@ -65,9 +68,12 @@ class LQChartLine: UIView {
         let path = UIBezierPath()
         let slayer = CAShapeLayer()
         
+        //计算 竖线结束点的 y坐标
+        let pointY = chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + chartLineStartY
+        
         for i in 0..<xValues.count{
                 path.move(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineStartY))
-                path.addLine(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + chartLineStartY))
+                path.addLine(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: pointY))
                 path.close()
                 slayer.path = path.cgPath
                 slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 79.0/255.0, alpha: 1.0).cgColor
@@ -99,28 +105,32 @@ class LQChartLine: UIView {
     ///添加x轴 文字
     private func addXLabel(point : CGPoint, index : NSInteger){
         //项目中只展示头尾视图
-        if index == 0 || index == xValues.count{
-            let xLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-            xLabel.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + 10 + chartLineStartY)
+        if index == 0 || index == xValues.count - 1{
+            let xLabel = UILabel()
             xLabel.textColor = UIColor.white
             xLabel.font = UIFont.systemFont(ofSize: 12)
             xLabel.textAlignment = NSTextAlignment.center
+            let str = xValues[index].suffix(5)
+            xLabel.text = String(str)
             xLabel.sizeToFit()
+            xLabel.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) + 10 + chartLineStartY)
             addSubview(xLabel)
         }
     }
     
     ///开始绘制图表
     func startDrawLines(){
+        //x轴方向 点坐标
         for i in 0..<xValues.count{
             pointXArray.append(chartLineStartX + chartLineTheXAxisSpan * CGFloat(i))
         }
-        
+        //y轴方向 点坐标
+        //取出y轴里最大的那个数
         let maxValue = (yValues.max()! as NSString).floatValue
-        
+        //取出y轴方向总大小
         let yHeight = chartLineTheYAxisSpan * CGFloat(kYEqualPaths)
-        
         for i in 0..<yValues.count{
+            //计算y轴方向坐标点
             pointYArray.append(CGFloat((yValues[i] as NSString).floatValue) * 0.95 /  CGFloat(maxValue) * yHeight + chartLineStartY)
         }
         
@@ -128,6 +138,9 @@ class LQChartLine: UIView {
             let point = CGPoint(x: pointXArray[i], y: pointYArray[i])
             points.append(point)
         }
+        
+        print(points)
+        
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.lineJoin = kCALineJoinRound
         shapeLayer.speed = 2
@@ -141,7 +154,6 @@ class LQChartLine: UIView {
         
         for i in 0..<points.count{
             let point = points[i]
-            
             if i == 0{
                 bezierLine.move(to: point)
             }
@@ -151,11 +163,6 @@ class LQChartLine: UIView {
             addCircle(point: point, index: i)
             addXLabel(point: point, index: i)
         }
-
-        ///添加移动小圆点
-        moveButton.center = points.last!
-        addSubview(moveButton)
-        
         ///设置图层
         shapeLayer.path = bezierLine.cgPath
         
@@ -169,12 +176,46 @@ class LQChartLine: UIView {
         
         shapeLayer.strokeEnd = 1.0
         
+        ///添加移动小圆点
+        moveButton.center = points.last!
+        addSubview(moveButton)
+        //添加titleView
+        addSubview(titleView)
+        //titleView 添加点击事件
+        titleView.forwardDay.addTarget(self, action: #selector(forwardDayClick(btn:)), for: .touchUpInside)
+        titleView.afterDay.addTarget(self, action: #selector(afterDayClick(btn:)), for: .touchUpInside)
+    }
+    
+    private func calculateCirclePointX() -> Int{
+        return Int((moveButton.center.x - chartLineStartX) / chartLineTheXAxisSpan)
     }
     
     //MARK: - 点击事件
+    @objc private func forwardDayClick(btn : UIButton){
+        
+        let move = calculateCirclePointX()
+        print(move)
+        UIView.animate(withDuration: 0.25) {
+            if move > 1{
+                self.moveButton.center = self.points[move - 1]
+            }
+            else if move == 1{
+                self.moveButton.center = self.points[move - 1]
+                self.titleView.forwardDay.isEnabled = false
+            }
+        }
+        
+        let saleCount = (yValues[move] as NSString).floatValue        
+        
+        titleView.changeTitleLabelText(dateString:xValues[move] , saleCount: String(format: "%0.2f",saleCount))
+        
+    }
+    
+    @objc private func afterDayClick(btn : UIButton){
+        
+    }
     
     @objc private func circleButtonClick(btn:UIButton){
-        
         
         
     }
@@ -197,6 +238,8 @@ class LQChartLine: UIView {
         btn.layer.masksToBounds = true
         return btn
     }()
+    ///顶部titleView
+    private lazy var titleView = LQChartHeaderTitle(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: chartLineStartY))
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

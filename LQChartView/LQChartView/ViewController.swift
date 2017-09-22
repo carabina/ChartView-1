@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
@@ -17,12 +18,14 @@ class ViewController: UIViewController {
     
     private func initData(){
         let fomatter = DateFormatter()
-        fomatter.dateFormat = "MM-dd"
+        fomatter.dateFormat = "YYYY-MM-dd"
         fomatter.locale = Locale(identifier: "en")
-        for i in 1..<8{
+        for i in 0..<7{
           xValues.append(fomatter.string(from:Date(timeIntervalSinceNow:(24*60*60*Double(i)))))
           yValue.append(String(arc4random_uniform(1000)))
         }
+        print(xValues)
+        
         addSubViewsLayout()
     }
     
