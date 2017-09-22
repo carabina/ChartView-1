@@ -15,8 +15,10 @@ protocol LQChartViewDataSource : NSObjectProtocol {
     func chatViewConfigXValue(_ chartView : LQChartView) -> Array<String>
 }
 
-///全局变量 竖线距离屏幕的距离
-let chartLineStartX :CGFloat = 20
+///全局变量 竖线距离屏幕两边的宽度
+let chartLineStartX : CGFloat = 20.0
+///横线距离顶部的 长度
+let chartLineStartY : CGFloat = 44.0
 
 class LQChartView: UIView {
 
@@ -26,9 +28,10 @@ class LQChartView: UIView {
     init(frame : CGRect, dataSource : LQChartViewDataSource) {
         super.init(frame: frame)
         self.dataSource = dataSource
-        
+        backgroundColor = UIColor(red: 255.0/255.0, green: 79.0/255.0, blue: 38.0/255.0, alpha: 1.0)
     }
     
+    //将图表添加到视图
     func showInView(_ view : UIView){
         startDraw()
         view.addSubview(self)
@@ -36,19 +39,21 @@ class LQChartView: UIView {
     
     ///开始绘制
     private func startDraw(){
-        chartLine.frame = frame
-        addSubview(chartLine)
-        
+        ///如果x轴和y轴没有值 则返回不进行下一步操作
         guard let yArray = dataSource?.chatViewConfigYValue(self), let xArray = dataSource?.chatViewConfigXValue(self) else{
             return
         }
+        
+        chartLine.frame = bounds
+        addSubview(chartLine)
+        ///设置数据源
         chartLine.xValues = xArray
         chartLine.yValues = yArray
+        ///开始绘图
         chartLine.startDrawLines()
     }
     
     //MARK: - 懒加载
-    
     private lazy var chartLine = LQChartLine()
     
     required init?(coder aDecoder: NSCoder) {

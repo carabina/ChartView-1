@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
+///y轴默认分 5等份
 private let kYEqualPaths: Int = 5
+
 
 class LQChartLine: UIView {
 
@@ -16,13 +17,17 @@ class LQChartLine: UIView {
     var xValues = Array<String>(){
         didSet{
             
+        chartLineTheXAxisSpan = (UIScreen.main.bounds.width - chartLineStartX * 2.0) / CGFloat(xValues.count - 1)
+        chartLineTheYAxisSpan = frame.size.height / CGFloat(kYEqualPaths)
+        drawVertical()
+            
         }
     }
   
     ///y轴数据
     var yValues = Array<String>(){
         didSet{
-            
+            drawHorizontal()
         }
     }
     ///每根竖线之间的距离
@@ -35,6 +40,44 @@ class LQChartLine: UIView {
     }
     
     //MARK: - 内部控制方法
+    /// 画横线
+    private func drawHorizontal(){
+        let path = UIBezierPath()
+        let slayer = CAShapeLayer()
+        
+        for i in 0...kYEqualPaths{
+            //这里只显示 第一根和最后一根
+//            if i == 0 || i == kYEqualPaths {
+            
+                path.move(to: CGPoint(x: 0, y: chartLineTheYAxisSpan * CGFloat(i)))
+                path.addLine(to: CGPoint(x: chartLineStartX * 2.0 + CGFloat(xValues.count - 1) * chartLineTheXAxisSpan, y: chartLineTheYAxisSpan * CGFloat(i)))
+                path.close()
+                slayer.path = path.cgPath
+                slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor
+                slayer.fillColor = UIColor.white.cgColor
+                slayer.lineWidth = 0.5
+                layer.addSublayer(slayer)
+//            }
+        }
+    }
+    
+    ///画竖线
+    private func drawVertical(){
+        let path = UIBezierPath()
+        let slayer = CAShapeLayer()
+        
+        for i in 0..<xValues.count{
+                path.move(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: 0))
+                path.addLine(to: CGPoint(x: chartLineStartX + chartLineTheXAxisSpan * CGFloat(i), y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths)))
+                path.close()
+                slayer.path = path.cgPath
+                slayer.strokeColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 79.0/255.0, alpha: 1.0).cgColor
+                slayer.fillColor = UIColor(red: 255.0 / 255.0, green: 125.0/255.0, blue: 79.0/255.0, alpha: 1.0).cgColor
+                slayer.lineWidth = 0.5
+                layer.addSublayer(slayer)
+        }
+    }
+    
     ///添加移动小圆点
     func addCircle(point : CGPoint , index : NSInteger){
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
@@ -55,7 +98,6 @@ class LQChartLine: UIView {
     }
     
     ///添加x轴 文字
-    
     private func addXLabel(point : CGPoint, index : NSInteger){
         //项目中只展示头尾视图
         if index == 0 || index == xValues.count{
