@@ -20,11 +20,10 @@ class ViewController: UIViewController {
         let fomatter = DateFormatter()
         fomatter.dateFormat = "YYYY-MM-dd"
         fomatter.locale = Locale(identifier: "en")
-        for i in 0..<7{
-          xValues.append(fomatter.string(from:Date(timeIntervalSinceNow:(24*60*60*Double(i)))))
+        for i in (0..<7).reversed(){
+          xValues.append(fomatter.string(from:Date(timeIntervalSinceNow:(-24*60*60*Double(i)))))
             yValues.append(Float(arc4random()%200))
         }
-        print(xValues)
         print(yValues)
         addSubViewsLayout()
     }

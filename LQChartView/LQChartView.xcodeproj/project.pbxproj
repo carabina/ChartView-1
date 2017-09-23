@@ -62,13 +62,21 @@
 			children = (
 				49412C521F73EDC00059119A /* AppDelegate.swift */,
 				49412C541F73EDC00059119A /* ViewController.swift */,
+				49412C6C1F76A8AC0059119A /* LQChartView */,
+				49412C591F73EDC00059119A /* Assets.xcassets */,
+				49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */,
+				49412C5E1F73EDC00059119A /* Info.plist */,
+			);
+			path = LQChartView;
+			sourceTree = "<group>";
+		};
+		49412C6C1F76A8AC0059119A /* LQChartView */ = {
+			isa = PBXGroup;
+			children = (
 				49412C641F73EE590059119A /* LQChartView.swift */,
 				49412C661F73EE840059119A /* LQChartLine.swift */,
 				49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */,
 				49412C6A1F754A940059119A /* String+Date.swift */,
-				49412C591F73EDC00059119A /* Assets.xcassets */,
-				49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */,
-				49412C5E1F73EDC00059119A /* Info.plist */,
 			);
 			path = LQChartView;
 			sourceTree = "<group>";
