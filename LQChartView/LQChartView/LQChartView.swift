@@ -10,7 +10,7 @@ import UIKit
 
 protocol LQChartViewDataSource : NSObjectProtocol {
     ///y轴数据
-    func chatViewConfigYValue(_ chartView : LQChartView) -> Array<String>
+    func chatViewConfigYValue(_ chartView : LQChartView) -> Array<Float>
     ///x轴数据
     func chatViewConfigXValue(_ chartView : LQChartView) -> Array<String>
 }

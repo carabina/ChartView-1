@@ -22,10 +22,10 @@ class ViewController: UIViewController {
         fomatter.locale = Locale(identifier: "en")
         for i in 0..<7{
           xValues.append(fomatter.string(from:Date(timeIntervalSinceNow:(24*60*60*Double(i)))))
-          yValue.append(String(arc4random_uniform(1000)))
+            yValues.append(Float(arc4random()%200))
         }
         print(xValues)
-        
+        print(yValues)
         addSubViewsLayout()
     }
     
@@ -35,17 +35,18 @@ class ViewController: UIViewController {
     }
     
     lazy var xValues = Array<String>()
-    lazy var yValue = Array<String>()
+    lazy var yValues = Array<Float>()
     
 }
 
 extension ViewController: LQChartViewDataSource{
+    
     func chatViewConfigXValue(_ chartView: LQChartView) -> Array<String> {
         return xValues
     }
     
-    func chatViewConfigYValue(_ chartView: LQChartView) -> Array<String> {
-        return yValue
+    func chatViewConfigYValue(_ chartView: LQChartView) -> Array<Float> {
+        return yValues
     }
     
 }

@@ -23,7 +23,7 @@ class LQChartLine: UIView {
     }
   
     ///y轴数据
-    var yValues = Array<String>(){
+    var yValues = Array<Float>(){
         didSet{
             drawHorizontal()
         }
@@ -50,7 +50,6 @@ class LQChartLine: UIView {
         for i in 0...kYEqualPaths{
             //这里只显示 第一根和最后一根
 //            if i == 0 || i == kYEqualPaths {
-            
                 path.move(to: CGPoint(x: 0, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
                 path.addLine(to: CGPoint(x: pointX, y: chartLineTheYAxisSpan * CGFloat(i) + chartLineStartY))
                 path.close()
@@ -126,20 +125,18 @@ class LQChartLine: UIView {
         }
         //y轴方向 点坐标
         //取出y轴里最大的那个数
-        let maxValue = (yValues.max()! as NSString).floatValue
+        let maxValue = yValues.max()!
         //取出y轴方向总大小
         let yHeight = chartLineTheYAxisSpan * CGFloat(kYEqualPaths)
         for i in 0..<yValues.count{
             //计算y轴方向坐标点
-            pointYArray.append(CGFloat((yValues[i] as NSString).floatValue) * 0.95 /  CGFloat(maxValue) * yHeight + chartLineStartY)
+            pointYArray.append(yHeight - CGFloat(yValues[i] / maxValue) * yHeight + chartLineStartY)
         }
         
         for i in 0..<pointXArray.count{
             let point = CGPoint(x: pointXArray[i], y: pointYArray[i])
             points.append(point)
         }
-        
-        print(points)
         
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.lineJoin = kCALineJoinRound
@@ -181,9 +178,11 @@ class LQChartLine: UIView {
         addSubview(moveButton)
         //添加titleView
         addSubview(titleView)
+        
+        titleView.changeTitleLabelText(dateString: xValues.last!, saleCount: String(format: "%0.2f",yValues.last!))
         //titleView 添加点击事件
-        titleView.forwardDay.addTarget(self, action: #selector(forwardDayClick(btn:)), for: .touchUpInside)
-        titleView.afterDay.addTarget(self, action: #selector(afterDayClick(btn:)), for: .touchUpInside)
+        titleView.forwardDay.addTarget(self, action: #selector(dayClick(btn:)), for: .touchUpInside)
+        titleView.afterDay.addTarget(self, action: #selector(dayClick(btn:)), for: .touchUpInside)
     }
     
     private func calculateCirclePointX() -> Int{
@@ -191,33 +190,36 @@ class LQChartLine: UIView {
     }
     
     //MARK: - 点击事件
-    @objc private func forwardDayClick(btn : UIButton){
-        
-        let move = calculateCirclePointX()
-        print(move)
-        UIView.animate(withDuration: 0.25) {
-            if move > 1{
-                self.moveButton.center = self.points[move - 1]
-            }
-            else if move == 1{
-                self.moveButton.center = self.points[move - 1]
-                self.titleView.forwardDay.isEnabled = false
+    @objc private func dayClick(btn : UIButton){
+
+        if btn.tag == 1{//前一天
+            UIView.animate(withDuration: 0.25) {
+                self.moveButton.center = self.points[self.calculateCirclePointX() - 1]
             }
         }
-        
-        let saleCount = (yValues[move] as NSString).floatValue        
-        
-        titleView.changeTitleLabelText(dateString:xValues[move] , saleCount: String(format: "%0.2f",saleCount))
-        
+        else if btn.tag == 2{//后一天
+            UIView.animate(withDuration: 0.25) {
+                self.moveButton.center = self.points[self.calculateCirclePointX() + 1]
+            }
+        }
+        setBtnEnableAndChangeTitle()
     }
     
-    @objc private func afterDayClick(btn : UIButton){
-        
+    ///点击竖线时 改变小圆点的center
+    @objc private func circleButtonClick(btn : UIButton){
+        UIView.animate(withDuration: 0.25) {
+            self.moveButton.center = self.points[btn.tag]
+        }
+        setBtnEnableAndChangeTitle()
     }
     
-    @objc private func circleButtonClick(btn:UIButton){
-        
-        
+    ///设置 按钮是否可点 和改变标题展示
+    private func setBtnEnableAndChangeTitle(){
+        //设置前一天 后一天按钮不可点击
+        self.titleView.forwardDay.isEnabled = calculateCirclePointX() > 0
+        self.titleView.afterDay.isEnabled = calculateCirclePointX() < self.xValues.count - 1
+        //改变标题文字
+        titleView.changeTitleLabelText(dateString:xValues[calculateCirclePointX()] , saleCount: String(format: "%0.2f",yValues[calculateCirclePointX()]))
     }
     
     //MARK: - 懒加载

@@ -20,7 +20,7 @@ class LQChartHeaderTitle: UIView {
     func changeTitleLabelText(dateString: String ,saleCount: String) {
         let weekString = dateString.weekDayFrom()
         
-        let textString = String(dateString.suffix(5)) + weekString + "销售额:" + "￥" + saleCount
+        let textString = String(dateString.suffix(5)) + "(\(weekString))" + "销售额:" + "￥" + saleCount
         
         let attribute = NSMutableAttributedString(string: textString)
         
@@ -55,7 +55,6 @@ class LQChartHeaderTitle: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.init(white: 1.0, alpha: 0.4), for: .disabled)
-        btn.backgroundColor = UIColor.green
         btn.tag = 1
         return btn
     }()
@@ -66,7 +65,7 @@ class LQChartHeaderTitle: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.init(white: 1.0, alpha: 0.4), for: .disabled)
-        btn.backgroundColor = UIColor.green
+        btn.isEnabled = false
         btn.tag = 2
         return btn
     }()
