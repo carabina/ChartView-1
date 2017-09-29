@@ -163,7 +163,7 @@ class LQChartLine: UIView {
         }
         
         if curve{
-            bezierLine = bezierLine.smoothedPathWithGranularity(granularity: 20)
+            bezierLine = bezierLine.smoothedPathWithGranularity(20)
         }
         
         ///设置图层

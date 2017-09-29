@@ -23,17 +23,14 @@ let chartLineStartY : CGFloat = 44.0
 class LQChartView: UIView {
     ///直线点是否为曲线
     var curve : Bool = false
-    
     ///代理
     private weak var dataSource : LQChartViewDataSource?
-
     ///初始化方法
     init(frame : CGRect, dataSource : LQChartViewDataSource) {
         super.init(frame: frame)
         self.dataSource = dataSource
         backgroundColor = UIColor(red: 255.0/255.0, green: 79.0/255.0, blue: 38.0/255.0, alpha: 1.0)
     }
-    
     //将图表添加到视图
     func showInView(_ view : UIView){
         startDraw()
