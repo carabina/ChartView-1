@@ -21,8 +21,12 @@ let chartLineStartX : CGFloat = 20.0
 let chartLineStartY : CGFloat = 44.0
 
 class LQChartView: UIView {
+    ///直线点是否为曲线
+    var curve : Bool = false
+    
     ///代理
-    weak var dataSource : LQChartViewDataSource?
+    private weak var dataSource : LQChartViewDataSource?
+
     ///初始化方法
     init(frame : CGRect, dataSource : LQChartViewDataSource) {
         super.init(frame: frame)
@@ -35,26 +39,25 @@ class LQChartView: UIView {
         startDraw()
         view.addSubview(self)
     }
-    
     ///开始绘制
     private func startDraw(){
         ///如果x轴和y轴没有值 则返回不进行下一步操作
         guard let yArray = dataSource?.chatViewConfigYValue(self), let xArray = dataSource?.chatViewConfigXValue(self) else{
             return
         }
-        
         chartLine.frame = bounds
         addSubview(chartLine)
         ///设置数据源
         chartLine.xValues = xArray
         chartLine.yValues = yArray
+        
+        chartLine.curve = curve
         ///开始绘图
         chartLine.startDrawLines()
     }
-    
     //MARK: - 懒加载
     private lazy var chartLine = LQChartLine()
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

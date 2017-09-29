@@ -31,7 +31,9 @@ class LQChartLine: UIView {
     var chartLineTheXAxisSpan : CGFloat = 0
     ///每根横线之间的距离
     var chartLineTheYAxisSpan : CGFloat = 0
-
+    ///折现处是否为曲线
+    var curve : Bool = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -129,7 +131,7 @@ class LQChartLine: UIView {
         let yHeight = chartLineTheYAxisSpan * CGFloat(kYEqualPaths)
         for i in 0..<yValues.count{
             //计算y轴方向坐标点
-            pointYArray.append(yHeight - CGFloat(yValues[i] / maxValue) * yHeight + chartLineStartY)
+            pointYArray.append(yHeight - CGFloat(yValues[i] / (maxValue + 8)) * yHeight + chartLineStartY)
         }
         
         for i in 0..<pointXArray.count{
@@ -146,7 +148,7 @@ class LQChartLine: UIView {
         shapeLayer.strokeColor = UIColor.init(white: 1.0, alpha: 0.5).cgColor
         layer.addSublayer(shapeLayer)
         
-        let bezierLine = UIBezierPath()
+        var bezierLine = UIBezierPath()
         
         for i in 0..<points.count{
             let point = points[i]
@@ -159,6 +161,11 @@ class LQChartLine: UIView {
             addCircle(point: point, index: i)
             addXLabel(point: point, index: i)
         }
+        
+        if curve{
+            bezierLine = bezierLine.smoothedPathWithGranularity(granularity: 20)
+        }
+        
         ///设置图层
         shapeLayer.path = bezierLine.cgPath
         

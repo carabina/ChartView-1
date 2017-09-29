@@ -15,6 +15,7 @@
 		49412C671F73EE840059119A /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C661F73EE840059119A /* LQChartLine.swift */; };
 		49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */; };
 		49412C6B1F754A940059119A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C6A1F754A940059119A /* String+Date.swift */; };
+		499E355F1F7E26490032EA26 /* UIBezierPath+curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		49412C661F73EE840059119A /* LQChartLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
 		49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
 		49412C6A1F754A940059119A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+curve.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				49412C661F73EE840059119A /* LQChartLine.swift */,
 				49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */,
 				49412C6A1F754A940059119A /* String+Date.swift */,
+				499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */,
 			);
 			path = LQChartView;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */,
+				499E355F1F7E26490032EA26 /* UIBezierPath+curve.swift in Sources */,
 				49412C651F73EE590059119A /* LQChartView.swift in Sources */,
 				49412C551F73EDC00059119A /* ViewController.swift in Sources */,
 				49412C531F73EDC00059119A /* AppDelegate.swift in Sources */,

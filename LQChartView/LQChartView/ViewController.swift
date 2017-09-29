@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     private func addSubViewsLayout(){
         let chart = LQChartView(frame: CGRect(x: 0, y: 64, width:UIScreen.main.bounds.width , height: UIScreen.main.bounds.height * 0.5), dataSource: self)
+        chart.curve = true
         chart.showInView(view)
     }
     
