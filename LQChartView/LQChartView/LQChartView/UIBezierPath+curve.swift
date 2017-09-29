@@ -8,51 +8,52 @@
 
 import UIKit
 
-typealias CGPathApplierBlock = @convention(block) (CGPathElement) -> Void
-extension CGPath {
-   fileprivate func apply(body: CGPathApplierBlock) {
-        self.apply(info: unsafeBitCast(body, to: UnsafeMutableRawPointer.self)) { (info, element) in
-            let block2 = unsafeBitCast(info, to: CGPathApplierBlock.self)
-            block2(element.pointee)
-        }
-    }
-}
+//typealias CGPathApplierBlock = @convention(block) (CGPathElement) -> Void
+//extension CGPath {
+//   fileprivate func apply(body: CGPathApplierBlock) {
+//        self.apply(info: unsafeBitCast(body, to: UnsafeMutableRawPointer.self)) { (info, element) in
+//            let block2 = unsafeBitCast(info, to: CGPathApplierBlock.self)
+//            block2(element.pointee)
+//        }
+//    }
+//}
 
 extension UIBezierPath {
     
-   fileprivate func pointsFromBezierPath() -> [CGPoint]
-    {
-        var bezierPoints = [CGPoint]()
-        
-        cgPath.apply(body: { (element: CGPathElement) in
-            
-            let numberOfPoints: Int = {
-                switch element.type {
-                case .moveToPoint, .addLineToPoint: // contains 1 point
-                    return 1
-                case .addQuadCurveToPoint: // contains 2 points
-                    return 2
-                case .addCurveToPoint: // contains 3 points
-                    return 3
-                case .closeSubpath:
-                    return 0
-                }
-            }()
-            for index in 0..<numberOfPoints {
-                let point = element.points[index]
-                bezierPoints.append(point)
-            }
-        })
-        return bezierPoints
-    }
+//   fileprivate func pointsFromBezierPath() -> [CGPoint]
+//    {
+//        var bezierPoints = [CGPoint]()
+//
+//        cgPath.apply(body: { (element: CGPathElement) in
+//
+//            let numberOfPoints: Int = {
+//                switch element.type {
+//                case .moveToPoint, .addLineToPoint: // contains 1 point
+//                    return 1
+//                case .addQuadCurveToPoint: // contains 2 points
+//                    return 2
+//                case .addCurveToPoint: // contains 3 points
+//                    return 3
+//                case .closeSubpath:
+//                    return 0
+//                }
+//            }()
+//            for index in 0..<numberOfPoints {
+//                let point = element.points[index]
+//                bezierPoints.append(point)
+//            }
+//        })
+//        return bezierPoints
+//    }
     
     ///画曲线
-    func smoothedPathWithGranularity(_ granularity: NSInteger) -> UIBezierPath{
-        var granularity = granularity
+    func smoothedPathWithGranularity(_ granularitys: NSInteger , _ pts : Array<CGPoint>) -> UIBezierPath{
+        var granularity = granularitys
         if granularity < 20 {
             granularity = 20
         }
-        var points = pointsFromBezierPath()
+        
+        var points = pts
         
         if points.count < 4 {
             return self.copy() as! UIBezierPath
@@ -86,7 +87,6 @@ extension UIBezierPath {
                 let pointY3 = (3 * p1.y - p0.y - 3 * p2.y + p3.y) * ttt
                 pi.y = (pointY1 + pointY2 + pointY3) * 0.5
                 smoothedPath.addLine(to: pi)
-                print(pi)
             }
             smoothedPath.addLine(to: p2)
         }

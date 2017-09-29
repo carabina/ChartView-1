@@ -38,7 +38,6 @@ class LQChartLine: UIView {
         super.init(frame: frame)
         
     }
-    
     //MARK: - 内部控制方法
     /// 画横线
     private func drawHorizontal(){
@@ -148,26 +147,24 @@ class LQChartLine: UIView {
         shapeLayer.strokeColor = UIColor.init(white: 1.0, alpha: 0.5).cgColor
         layer.addSublayer(shapeLayer)
         
-        var bezierLine = UIBezierPath()
-        
         for i in 0..<points.count{
             let point = points[i]
             if i == 0{
-                bezierLine.move(to: point)
+                bezierPathLine.move(to: point)
             }
             else{
-                bezierLine.addLine(to: point)
+                bezierPathLine.addLine(to: point)
             }
             addCircle(point: point, index: i)
             addXLabel(point: point, index: i)
         }
         
         if curve{
-            bezierLine = bezierLine.smoothedPathWithGranularity(20)
+            bezierPathLine = bezierPathLine.smoothedPathWithGranularity(20 , points)
         }
         
         ///设置图层
-        shapeLayer.path = bezierLine.cgPath
+        shapeLayer.path = bezierPathLine.cgPath
         
         let pathAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
         pathAnimation.duration = Double(points.count) * 0.5
@@ -238,6 +235,8 @@ class LQChartLine: UIView {
     private lazy var points = Array<CGPoint>()
     ///图层
     private lazy var shapeLayer = CAShapeLayer()
+    
+    private lazy var bezierPathLine = UIBezierPath()
     ///移动的小圆点
     private lazy var moveButton : UIButton = {
        let btn = UIButton(type: .custom)

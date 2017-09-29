@@ -32,10 +32,10 @@ class ViewController: UIViewController {
         chart.curve = true
         chart.showInView(view)
     }
-    
+
     lazy var xValues = Array<String>()
     lazy var yValues = Array<Float>()
-    
+
 }
 
 extension ViewController: LQChartViewDataSource{
