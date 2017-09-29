@@ -15,7 +15,6 @@ class LQChartLine: UIView {
     ///x轴数据
     var xValues = Array<String>(){
         didSet{
-            
         chartLineTheXAxisSpan = (UIScreen.main.bounds.width - chartLineStartX * 2.0) / CGFloat(xValues.count - 1)
         chartLineTheYAxisSpan = (frame.size.height - chartLineStartY * 2.0) / CGFloat(kYEqualPaths)
         drawVertical()
@@ -90,9 +89,8 @@ class LQChartLine: UIView {
         view.layer.cornerRadius = 2
         view.layer.masksToBounds = true
         addSubview(view)
-        
+        ///每根竖线上面添加一个可点击的按钮
         let btn = UIButton(type: .custom)
-        
         btn.frame = CGRect(x: 0, y: 0, width: 15, height: chartLineTheYAxisSpan * CGFloat(kYEqualPaths))
         btn.backgroundColor = UIColor.clear
         btn.center = CGPoint(x: point.x, y: chartLineTheYAxisSpan * CGFloat(kYEqualPaths) * 0.5 + chartLineStartY)
@@ -109,6 +107,7 @@ class LQChartLine: UIView {
             xLabel.textColor = UIColor.white
             xLabel.font = UIFont.systemFont(ofSize: 12)
             xLabel.textAlignment = NSTextAlignment.center
+            ///取日期后5位  2017-10-01 -> 10-01
             let str = xValues[index].suffix(5)
             xLabel.text = String(str)
             xLabel.sizeToFit()
@@ -140,7 +139,7 @@ class LQChartLine: UIView {
         
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.lineJoin = kCALineJoinRound
-        shapeLayer.speed = 2
+        shapeLayer.speed = 2  //画线速度
         shapeLayer.lineWidth = 1.0
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeEnd = 0
@@ -174,6 +173,7 @@ class LQChartLine: UIView {
         shapeLayer.strokeEnd = 1.0
         
         ///添加移动小圆点
+        //默认在最后一个点上
         moveButton.center = points.last!
         addSubview(moveButton)
         //添加titleView

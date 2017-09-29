@@ -9,7 +9,7 @@
 import UIKit
 
 extension String{
-    
+    ///日期字符串 -> 返回一个星期字符串 
     func weekDayFrom() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"

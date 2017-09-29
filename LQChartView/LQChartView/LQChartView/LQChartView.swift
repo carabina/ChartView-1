@@ -9,9 +9,9 @@
 import UIKit
 
 protocol LQChartViewDataSource : NSObjectProtocol {
-    ///y轴数据
+    ///y轴数据 业绩
     func chatViewConfigYValue(_ chartView : LQChartView) -> Array<Float>
-    ///x轴数据
+    ///x轴数据 日期
     func chatViewConfigXValue(_ chartView : LQChartView) -> Array<String>
 }
 
@@ -21,7 +21,6 @@ let chartLineStartX : CGFloat = 20.0
 let chartLineStartY : CGFloat = 44.0
 
 class LQChartView: UIView {
-
     ///代理
     weak var dataSource : LQChartViewDataSource?
     ///初始化方法
