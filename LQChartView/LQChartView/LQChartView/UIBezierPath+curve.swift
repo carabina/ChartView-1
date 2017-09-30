@@ -71,6 +71,7 @@ extension UIBezierPath {
             let p1 = points[index]
             let p2 = points[index + 1]
             let p3 = points[index + 2]
+            
             for i in 1..<granularity{
                 let t = CGFloat(i) * (1.0 / CGFloat(granularity))
                 let tt = t * t
