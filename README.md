@@ -3,7 +3,7 @@
 当初是用OC实现的,现在我用swift去实现.主要是想留下一点东西顺便回忆一下...
 
 ![image](https://github.com/liuqing520it/ChartView/raw/master/demo.gif)
-
+![image](https://github.com/liuqing520it/ChartView/raw/master/chart.gif)
 ###如何使用
 
 1. 初始化
