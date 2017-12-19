@@ -11,11 +11,11 @@
 		49412C551F73EDC00059119A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C541F73EDC00059119A /* ViewController.swift */; };
 		49412C5A1F73EDC00059119A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49412C591F73EDC00059119A /* Assets.xcassets */; };
 		49412C5D1F73EDC00059119A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */; };
-		49412C651F73EE590059119A /* LQChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C641F73EE590059119A /* LQChartView.swift */; };
-		49412C671F73EE840059119A /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C661F73EE840059119A /* LQChartLine.swift */; };
-		49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */; };
-		49412C6B1F754A940059119A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C6A1F754A940059119A /* String+Date.swift */; };
-		499E355F1F7E26490032EA26 /* UIBezierPath+curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */; };
+		49D16D0A1FE8B92900C4A24F /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */; };
+		49D16D0B1FE8B92900C4A24F /* LQChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D061FE8B92900C4A24F /* LQChartView.swift */; };
+		49D16D0C1FE8B92900C4A24F /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D071FE8B92900C4A24F /* LQChartLine.swift */; };
+		49D16D0D1FE8B92900C4A24F /* UIBezierPath+curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */; };
+		49D16D0E1FE8B92900C4A24F /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D091FE8B92900C4A24F /* String+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +25,11 @@
 		49412C591F73EDC00059119A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49412C5C1F73EDC00059119A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49412C5E1F73EDC00059119A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49412C641F73EE590059119A /* LQChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartView.swift; sourceTree = "<group>"; };
-		49412C661F73EE840059119A /* LQChartLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
-		49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
-		49412C6A1F754A940059119A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
-		499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+curve.swift"; sourceTree = "<group>"; };
+		49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
+		49D16D061FE8B92900C4A24F /* LQChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartView.swift; sourceTree = "<group>"; };
+		49D16D071FE8B92900C4A24F /* LQChartLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
+		49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+curve.swift"; sourceTree = "<group>"; };
+		49D16D091FE8B92900C4A24F /* String+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +62,9 @@
 		49412C511F73EDC00059119A /* LQChartView */ = {
 			isa = PBXGroup;
 			children = (
+				49D16D041FE8B92900C4A24F /* ChartView */,
 				49412C521F73EDC00059119A /* AppDelegate.swift */,
 				49412C541F73EDC00059119A /* ViewController.swift */,
-				49412C6C1F76A8AC0059119A /* LQChartView */,
 				49412C591F73EDC00059119A /* Assets.xcassets */,
 				49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */,
 				49412C5E1F73EDC00059119A /* Info.plist */,
@@ -72,16 +72,17 @@
 			path = LQChartView;
 			sourceTree = "<group>";
 		};
-		49412C6C1F76A8AC0059119A /* LQChartView */ = {
+		49D16D041FE8B92900C4A24F /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
-				49412C641F73EE590059119A /* LQChartView.swift */,
-				49412C661F73EE840059119A /* LQChartLine.swift */,
-				49412C681F74E92F0059119A /* LQChartHeaderTitle.swift */,
-				49412C6A1F754A940059119A /* String+Date.swift */,
-				499E355E1F7E26490032EA26 /* UIBezierPath+curve.swift */,
+				49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */,
+				49D16D061FE8B92900C4A24F /* LQChartView.swift */,
+				49D16D071FE8B92900C4A24F /* LQChartLine.swift */,
+				49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */,
+				49D16D091FE8B92900C4A24F /* String+Date.swift */,
 			);
-			path = LQChartView;
+			name = ChartView;
+			path = ../../ChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,13 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49412C691F74E92F0059119A /* LQChartHeaderTitle.swift in Sources */,
-				499E355F1F7E26490032EA26 /* UIBezierPath+curve.swift in Sources */,
-				49412C651F73EE590059119A /* LQChartView.swift in Sources */,
+				49D16D0E1FE8B92900C4A24F /* String+Date.swift in Sources */,
+				49D16D0C1FE8B92900C4A24F /* LQChartLine.swift in Sources */,
 				49412C551F73EDC00059119A /* ViewController.swift in Sources */,
 				49412C531F73EDC00059119A /* AppDelegate.swift in Sources */,
-				49412C6B1F754A940059119A /* String+Date.swift in Sources */,
-				49412C671F73EE840059119A /* LQChartLine.swift in Sources */,
+				49D16D0B1FE8B92900C4A24F /* LQChartView.swift in Sources */,
+				49D16D0A1FE8B92900C4A24F /* LQChartHeaderTitle.swift in Sources */,
+				49D16D0D1FE8B92900C4A24F /* UIBezierPath+curve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
