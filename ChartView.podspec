@@ -1,6 +1,7 @@
 Pod::Spec.new do |s|
 s.name     = 'ChartView'
 s.version  = '1.1.0'
+s.license = 'MIT'
 s.platform = :ios, '9.0'
 s.summary  = 'show performance chart view'
 s.homepage = 'https://github.com/liuqing520it/ChartView'
