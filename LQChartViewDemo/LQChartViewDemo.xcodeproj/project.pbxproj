@@ -11,25 +11,25 @@
 		49412C551F73EDC00059119A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49412C541F73EDC00059119A /* ViewController.swift */; };
 		49412C5A1F73EDC00059119A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49412C591F73EDC00059119A /* Assets.xcassets */; };
 		49412C5D1F73EDC00059119A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */; };
-		49D16D0A1FE8B92900C4A24F /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */; };
-		49D16D0B1FE8B92900C4A24F /* LQChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D061FE8B92900C4A24F /* LQChartView.swift */; };
-		49D16D0C1FE8B92900C4A24F /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D071FE8B92900C4A24F /* LQChartLine.swift */; };
-		49D16D0D1FE8B92900C4A24F /* UIBezierPath+curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */; };
-		49D16D0E1FE8B92900C4A24F /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D16D091FE8B92900C4A24F /* String+Date.swift */; };
+		4987B8EA1FE8F13200B281F6 /* LQChartHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987B8E51FE8F13200B281F6 /* LQChartHeaderTitle.swift */; };
+		4987B8EB1FE8F13200B281F6 /* LQChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987B8E61FE8F13200B281F6 /* LQChartView.swift */; };
+		4987B8EC1FE8F13200B281F6 /* LQChartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987B8E71FE8F13200B281F6 /* LQChartLine.swift */; };
+		4987B8ED1FE8F13200B281F6 /* UIBezierPath+curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987B8E81FE8F13200B281F6 /* UIBezierPath+curve.swift */; };
+		4987B8EE1FE8F13200B281F6 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987B8E91FE8F13200B281F6 /* String+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49412C4F1F73EDC00059119A /* LQChartView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQChartView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49412C4F1F73EDC00059119A /* LQChartViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQChartViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49412C521F73EDC00059119A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49412C541F73EDC00059119A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		49412C591F73EDC00059119A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49412C5C1F73EDC00059119A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49412C5E1F73EDC00059119A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
-		49D16D061FE8B92900C4A24F /* LQChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartView.swift; sourceTree = "<group>"; };
-		49D16D071FE8B92900C4A24F /* LQChartLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
-		49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+curve.swift"; sourceTree = "<group>"; };
-		49D16D091FE8B92900C4A24F /* String+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		4987B8E51FE8F13200B281F6 /* LQChartHeaderTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartHeaderTitle.swift; sourceTree = "<group>"; };
+		4987B8E61FE8F13200B281F6 /* LQChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartView.swift; sourceTree = "<group>"; };
+		4987B8E71FE8F13200B281F6 /* LQChartLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQChartLine.swift; sourceTree = "<group>"; };
+		4987B8E81FE8F13200B281F6 /* UIBezierPath+curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+curve.swift"; sourceTree = "<group>"; };
+		4987B8E91FE8F13200B281F6 /* String+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 		49412C461F73EDC00059119A = {
 			isa = PBXGroup;
 			children = (
-				49412C511F73EDC00059119A /* LQChartView */,
+				49412C511F73EDC00059119A /* LQChartViewDemo */,
 				49412C501F73EDC00059119A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,43 +54,43 @@
 		49412C501F73EDC00059119A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49412C4F1F73EDC00059119A /* LQChartView.app */,
+				49412C4F1F73EDC00059119A /* LQChartViewDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49412C511F73EDC00059119A /* LQChartView */ = {
+		49412C511F73EDC00059119A /* LQChartViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				49D16D041FE8B92900C4A24F /* ChartView */,
+				4987B8E41FE8F13200B281F6 /* LQChartView */,
 				49412C521F73EDC00059119A /* AppDelegate.swift */,
 				49412C541F73EDC00059119A /* ViewController.swift */,
 				49412C591F73EDC00059119A /* Assets.xcassets */,
 				49412C5B1F73EDC00059119A /* LaunchScreen.storyboard */,
 				49412C5E1F73EDC00059119A /* Info.plist */,
 			);
-			path = LQChartView;
+			path = LQChartViewDemo;
 			sourceTree = "<group>";
 		};
-		49D16D041FE8B92900C4A24F /* ChartView */ = {
+		4987B8E41FE8F13200B281F6 /* LQChartView */ = {
 			isa = PBXGroup;
 			children = (
-				49D16D051FE8B92900C4A24F /* LQChartHeaderTitle.swift */,
-				49D16D061FE8B92900C4A24F /* LQChartView.swift */,
-				49D16D071FE8B92900C4A24F /* LQChartLine.swift */,
-				49D16D081FE8B92900C4A24F /* UIBezierPath+curve.swift */,
-				49D16D091FE8B92900C4A24F /* String+Date.swift */,
+				4987B8E51FE8F13200B281F6 /* LQChartHeaderTitle.swift */,
+				4987B8E61FE8F13200B281F6 /* LQChartView.swift */,
+				4987B8E71FE8F13200B281F6 /* LQChartLine.swift */,
+				4987B8E81FE8F13200B281F6 /* UIBezierPath+curve.swift */,
+				4987B8E91FE8F13200B281F6 /* String+Date.swift */,
 			);
-			name = ChartView;
-			path = ../../ChartView;
+			name = LQChartView;
+			path = ../../LQChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49412C4E1F73EDC00059119A /* LQChartView */ = {
+		49412C4E1F73EDC00059119A /* LQChartViewDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49412C611F73EDC00059119A /* Build configuration list for PBXNativeTarget "LQChartView" */;
+			buildConfigurationList = 49412C611F73EDC00059119A /* Build configuration list for PBXNativeTarget "LQChartViewDemo" */;
 			buildPhases = (
 				49412C4B1F73EDC00059119A /* Sources */,
 				49412C4C1F73EDC00059119A /* Frameworks */,
@@ -100,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = LQChartView;
+			name = LQChartViewDemo;
 			productName = LQChartView;
-			productReference = 49412C4F1F73EDC00059119A /* LQChartView.app */;
+			productReference = 49412C4F1F73EDC00059119A /* LQChartViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +122,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 49412C4A1F73EDC00059119A /* Build configuration list for PBXProject "LQChartView" */;
+			buildConfigurationList = 49412C4A1F73EDC00059119A /* Build configuration list for PBXProject "LQChartViewDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,7 +135,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49412C4E1F73EDC00059119A /* LQChartView */,
+				49412C4E1F73EDC00059119A /* LQChartViewDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -157,13 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D16D0E1FE8B92900C4A24F /* String+Date.swift in Sources */,
-				49D16D0C1FE8B92900C4A24F /* LQChartLine.swift in Sources */,
+				4987B8EE1FE8F13200B281F6 /* String+Date.swift in Sources */,
+				4987B8EC1FE8F13200B281F6 /* LQChartLine.swift in Sources */,
 				49412C551F73EDC00059119A /* ViewController.swift in Sources */,
 				49412C531F73EDC00059119A /* AppDelegate.swift in Sources */,
-				49D16D0B1FE8B92900C4A24F /* LQChartView.swift in Sources */,
-				49D16D0A1FE8B92900C4A24F /* LQChartHeaderTitle.swift in Sources */,
-				49D16D0D1FE8B92900C4A24F /* UIBezierPath+curve.swift in Sources */,
+				4987B8EB1FE8F13200B281F6 /* LQChartView.swift in Sources */,
+				4987B8EA1FE8F13200B281F6 /* LQChartHeaderTitle.swift in Sources */,
+				4987B8ED1FE8F13200B281F6 /* UIBezierPath+curve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49412C4A1F73EDC00059119A /* Build configuration list for PBXProject "LQChartView" */ = {
+		49412C4A1F73EDC00059119A /* Build configuration list for PBXProject "LQChartViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49412C5F1F73EDC00059119A /* Debug */,
@@ -332,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49412C611F73EDC00059119A /* Build configuration list for PBXNativeTarget "LQChartView" */ = {
+		49412C611F73EDC00059119A /* Build configuration list for PBXNativeTarget "LQChartViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49412C621F73EDC00059119A /* Debug */,
