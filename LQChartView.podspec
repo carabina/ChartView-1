@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name     = 'LQChartView'
-s.version  = '1.1.0'
+s.version  = '1.1.1'
 s.license = 'MIT'
 s.platform = :ios, '9.0'
 s.summary  = 'show performance chart view'
