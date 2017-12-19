@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class LQChartHeaderTitle: UIView {
 
@@ -23,8 +24,8 @@ class LQChartHeaderTitle: UIView {
         let textString = String(dateString.suffix(5)) + "(\(weekString))" + "销售额:" + "￥" + saleCount
         let attribute = NSMutableAttributedString(string: textString)
         ///最后两位 金额颜色半透明
-        attribute.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.init(white: 1.0, alpha: 0.4)], range: NSMakeRange((textString as NSString).length - 2, 2))
-        attribute.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.init(white: 1.0, alpha: 1.0)], range: NSMakeRange(0, (textString as NSString).length - 2))
+        attribute.addAttributes([.foregroundColor : UIColor.init(white: 1.0, alpha: 0.4)], range: NSMakeRange((textString as NSString).length - 2, 2))
+        attribute.addAttributes([.foregroundColor : UIColor.init(white: 1.0, alpha: 1.0)], range: NSMakeRange(0, (textString as NSString).length - 2))
         titleLabel.attributedText = attribute
         titleLabel.sizeToFit()
     }
